@@ -22,7 +22,8 @@ public interface UserDao {
             "last_name LIKE :last LIMIT 1")
     User findByName(String first, String last);
 
-    @Query("SELECT * FROM results WHERE subject LIKE "English")
+    @Query("SELECT * FROM results WHERE subject LIKE :subject")
+    User findBySubject(String subject);
 
     @Insert
     void insertAll(User... results);
