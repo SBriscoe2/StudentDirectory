@@ -1,6 +1,7 @@
 package com.example.students;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -27,5 +28,32 @@ public class SecondActivity extends AppCompatActivity {
         submit = (Button)findViewById(R.id.btnSubmit);
         secondView = (TextView)findViewById(R.id.editSecondPage);
 
+        submit.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                String firstname = firstName.getText().toString();
+                String lastname =  lastName.getText().toString();
+                String subjectname = subject.getText().toString();
+                int scores = Integer.parseInt(score.getText().toString());
+
+                User student  = new User();
+                student.setFirstName(firstname);
+                student.setLastName(lastname);
+                student.setSubject(subjectname);
+                student.setScore(scores);
+
+//                MainActivity.myAppDatabase.userDao().addStudent(student);
+//                Toast.makeText(setActivity(), "Request to add student details successful", Toast.LENGTH_LONG).show();
+
+                firstName.setText("");
+                lastName.setText("");
+                subject.setText("");
+                score.setText("");
+            }
+        });
+
+        }
+
     }
-}
+

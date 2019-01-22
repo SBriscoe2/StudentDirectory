@@ -17,14 +17,17 @@ public class MainActivity extends AppCompatActivity {
     private TextView Attempts;
     private Button Login;
     private int counter = 3;
+    public static MyAppDatabase myAppDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MyAppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                MyAppDatabase.class, "User").build();
+//        MyAppDatabase db = Room.databaseBuilder(getApplicationContext(),
+//                MyAppDatabase.class, "User").build();
+
+        MyAppDatabase db = Room.databaseBuilder(getApplicationContext(), MyAppDatabase.class, "results").build();
 
         Name = (EditText)findViewById(R.id.editName);
         Password = (EditText)findViewById(R.id.editPassword);

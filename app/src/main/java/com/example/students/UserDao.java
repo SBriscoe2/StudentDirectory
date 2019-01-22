@@ -6,6 +6,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 //DAO = data access objects
 //DAO includes methods that offer abstract access to your app's database.
@@ -25,9 +26,15 @@ public interface UserDao {
     @Query("SELECT * FROM results WHERE subject LIKE :subject")
     User findBySubject(String subject);
 
+//    @Query("INSERT INTO results VALUES (first_name, last_name, subject, score")
+//    User addStudent(String first_name, String last_name, String subject, int score);
+
     @Insert
-    void insertAll(User... results);
+    void addStudent(User... results);
 
     @Delete
-    void delete(User results);
+    void deleteStudent(User results);
+
+    @Update
+    void updateStudent(User results);
 }
