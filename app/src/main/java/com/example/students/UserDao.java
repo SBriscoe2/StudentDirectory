@@ -12,19 +12,21 @@ import androidx.room.Query;
 
 @Dao
 public interface UserDao {
-    @Query("SELECT * FROM user")
+    @Query("SELECT * FROM results")
     List<User> getAll();
 
-    @Query("SELECT * FROM user WHERE uid IN (:userIds)")
+    @Query("SELECT * FROM results WHERE uid IN (:userIds)")
     List<User> loadAllByIds(int[] userIds);
 
-    @Query("SELECT * FROM user WHERE first_name LIKE :first AND " +
+    @Query("SELECT * FROM results WHERE first_name LIKE :first AND " +
             "last_name LIKE :last LIMIT 1")
     User findByName(String first, String last);
 
+    @Query("SELECT * FROM results WHERE subject LIKE "English")
+
     @Insert
-    void insertAll(User... users);
+    void insertAll(User... results);
 
     @Delete
-    void delete(User user);
+    void delete(User results);
 }
